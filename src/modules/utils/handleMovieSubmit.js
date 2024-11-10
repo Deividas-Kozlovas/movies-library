@@ -17,6 +17,16 @@ const handleMovieSubmit = () => {
       return;
     }
 
+    const cachedMovie = localStorage.getItem(title.toLowerCase());
+    if (cachedMovie) {
+      const movie = JSON.parse(cachedMovie);
+      movieCardContainer.innerHTML = MovieCard(movie);
+      document.querySelector("#movieTitle").value = "";
+      const formElement = document.querySelector(".movie-form");
+      formElement.classList.add("top");
+      return;
+    }
+
     try {
       const movie = await ajaxService(title);
 
@@ -25,6 +35,8 @@ const handleMovieSubmit = () => {
           '<p class="error-message">No movie found!</p>';
         return;
       }
+
+      localStorage.setItem(title.toLowerCase(), JSON.stringify(movie));
 
       if (!movieCardContainer) {
         console.error("Movie cards container not found");

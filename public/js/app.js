@@ -5444,7 +5444,7 @@ var handleMovieSubmit = function handleMovieSubmit() {
   var form = document.querySelector("#findMovies");
   form.addEventListener("submit", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
-      var title, movieCardContainer, movie, formElement;
+      var title, movieCardContainer, cachedMovie, movie, formElement, _movie, _formElement;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -5458,41 +5458,54 @@ var handleMovieSubmit = function handleMovieSubmit() {
             movieCardContainer.innerHTML = '<p class="error-message">Please enter a movie title!</p>';
             return _context.abrupt("return");
           case 6:
-            _context.prev = 6;
-            _context.next = 9;
+            cachedMovie = localStorage.getItem(title.toLowerCase());
+            if (!cachedMovie) {
+              _context.next = 14;
+              break;
+            }
+            movie = JSON.parse(cachedMovie);
+            movieCardContainer.innerHTML = (0,_components_moviesCard_MovieCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie);
+            document.querySelector("#movieTitle").value = "";
+            formElement = document.querySelector(".movie-form");
+            formElement.classList.add("top");
+            return _context.abrupt("return");
+          case 14:
+            _context.prev = 14;
+            _context.next = 17;
             return (0,_ajaxService__WEBPACK_IMPORTED_MODULE_0__["default"])(title);
-          case 9:
-            movie = _context.sent;
-            if (!(!movie || !movie.Poster)) {
-              _context.next = 13;
+          case 17:
+            _movie = _context.sent;
+            if (!(!_movie || !_movie.Poster)) {
+              _context.next = 21;
               break;
             }
             movieCardContainer.innerHTML = '<p class="error-message">No movie found!</p>';
             return _context.abrupt("return");
-          case 13:
+          case 21:
+            localStorage.setItem(title.toLowerCase(), JSON.stringify(_movie));
             if (movieCardContainer) {
-              _context.next = 16;
+              _context.next = 25;
               break;
             }
             console.error("Movie cards container not found");
             return _context.abrupt("return");
-          case 16:
+          case 25:
             document.querySelector("#movieTitle").value = "";
-            movieCardContainer.innerHTML = (0,_components_moviesCard_MovieCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie);
-            formElement = document.querySelector(".movie-form");
-            formElement.classList.add("top");
-            _context.next = 26;
+            movieCardContainer.innerHTML = (0,_components_moviesCard_MovieCard__WEBPACK_IMPORTED_MODULE_1__["default"])(_movie);
+            _formElement = document.querySelector(".movie-form");
+            _formElement.classList.add("top");
+            _context.next = 35;
             break;
-          case 22:
-            _context.prev = 22;
-            _context.t0 = _context["catch"](6);
+          case 31:
+            _context.prev = 31;
+            _context.t0 = _context["catch"](14);
             console.error("Error fetching movie:", _context.t0);
             movieCardContainer.innerHTML = '<p class="error-message">An error occurred while fetching the movie!</p>';
-          case 26:
+          case 35:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[6, 22]]);
+      }, _callee, null, [[14, 31]]);
     }));
     return function (_x) {
       return _ref.apply(this, arguments);
