@@ -1,3 +1,3 @@
-import ajaxService from "./modules/ajaxService";
+import renderMovie from "./modules/utils/renderMovie";
 
-console.log(ajaxService());
+renderMovie();

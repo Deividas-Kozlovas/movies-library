@@ -1,7 +1,16 @@
-async function ajaxService() {
+require("dotenv").config();
+
+const ajaxService = async (movie) => {
   try {
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      throw new Error(
+        "API key is missing. Please check your environment variables."
+      );
+    }
+
     const response = await fetch(
-      "http://www.omdbapi.com/?i=tt3896198&apikey=d4181cea"
+      `http://www.omdbapi.com/?t=${movie}&apikey=${apiKey}`
     );
 
     if (!response.ok) {
@@ -16,6 +25,6 @@ async function ajaxService() {
     console.error("Fetch error:", error.message);
     return [];
   }
-}
+};
 
 export default ajaxService;

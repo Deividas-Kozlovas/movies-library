@@ -13,6 +13,9 @@ const MovieCard = (movie) => {
                 <li>Rating: ${movie.rating}</li>
               </ul>
             </div>
+            </div>
+          <div>
+            <p>No movies with this title where found</p>
           </div>
       </main>
     `;
