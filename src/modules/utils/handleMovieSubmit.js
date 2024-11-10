@@ -9,8 +9,11 @@ const handleMovieSubmit = () => {
 
     const title = document.querySelector("#movieTitle").value.trim();
 
+    const movieCardContainer = document.querySelector(".movie-cards-container");
+
     if (!title) {
-      alert("Please enter a movie title!");
+      movieCardContainer.innerHTML =
+        '<p class="error-message">Please enter a movie title!</p>';
       return;
     }
 
@@ -18,13 +21,10 @@ const handleMovieSubmit = () => {
       const movie = await ajaxService(title);
 
       if (!movie || !movie.Poster) {
-        alert("No movie found!");
+        movieCardContainer.innerHTML =
+          '<p class="error-message">No movie found!</p>';
         return;
       }
-
-      const movieCardContainer = document.querySelector(
-        ".movie-cards-container"
-      );
 
       if (!movieCardContainer) {
         console.error("Movie cards container not found");
@@ -39,6 +39,8 @@ const handleMovieSubmit = () => {
       formElement.classList.add("top");
     } catch (error) {
       console.error("Error fetching movie:", error);
+      movieCardContainer.innerHTML =
+        '<p class="error-message">An error occurred while fetching the movie!</p>';
     }
   });
 };
