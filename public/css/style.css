@@ -11965,3 +11965,99 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.movie-card {
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+.movie-card__image {
+  width: 35%;
+}
+.movie-card__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.movie-card__details {
+  padding: 1.5rem;
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.movie-card__details__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+.movie-card__details__rating {
+  font-size: 1.2rem;
+  color: #ff9800;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.movie-card__details__genre, .movie-card__details__runtime, .movie-card__details__release {
+  font-size: 1rem;
+  color: #616161;
+  margin: 0.3rem 0;
+}
+.movie-card__details__summary, .movie-card__details__cast, .movie-card__details__crew {
+  margin-top: 1rem;
+}
+.movie-card__details__summary h3, .movie-card__details__summary .h3, .movie-card__details__cast h3, .movie-card__details__cast .h3, .movie-card__details__crew h3, .movie-card__details__crew .h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.movie-card__details__summary p, .movie-card__details__cast p, .movie-card__details__crew p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+.movie-card__details__ratings {
+  margin-top: 1rem;
+}
+.movie-card__details__ratings h3, .movie-card__details__ratings .h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.movie-card__details__ratings ul {
+  padding-left: 1.5rem;
+  list-style: none;
+  margin-top: 0.5rem;
+}
+.movie-card__details__ratings ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+.movie-card__details__ratings ul li::before {
+  content: "•";
+  color: #ff9800;
+  margin-right: 0.5rem;
+}
+.movie-card__details__awards, .movie-card__details__box-office {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+.movie-card__details__awards strong, .movie-card__details__box-office strong {
+  font-weight: 600;
+}

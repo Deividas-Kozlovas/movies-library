@@ -1,6 +1,6 @@
 import ajaxService from "./ajaxService";
 import MovieForm from "../components/MovieForm";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/moviesCard/MovieCard";
 
 const renderMovie = () => {
   document.querySelector(".container").innerHTML = MovieForm();
