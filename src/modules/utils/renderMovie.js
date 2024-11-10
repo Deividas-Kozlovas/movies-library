@@ -1,21 +1,9 @@
-import ajaxService from "./ajaxService";
-import MovieForm from "../components/MovieForm";
-import MovieCard from "../components/moviesCard/MovieCard";
+import renderMovieForm from "./renderMovieForm";
+import handleMovieSubmit from "./handleMovieSubmit";
 
 const renderMovie = () => {
-  document.querySelector(".container").innerHTML = MovieForm();
-
-  document
-    .querySelector("#findMovies")
-    .addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const title = document.querySelector("#movieTitle").value;
-
-      const movie = await ajaxService(title);
-
-      document.querySelector(".container").innerHTML += MovieCard(movie);
-    });
+  renderMovieForm();
+  handleMovieSubmit();
 };
 
 export default renderMovie;

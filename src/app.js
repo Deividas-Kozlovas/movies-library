@@ -1,3 +1,5 @@
 import renderMovie from "./modules/utils/renderMovie";
 
-renderMovie();
+document.addEventListener("DOMContentLoaded", () => {
+  renderMovie();
+});
